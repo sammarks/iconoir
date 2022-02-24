@@ -1,7 +1,7 @@
-const { execSync } = require('child_process');
-const semver = require('semver');
-const path = require('path');
-const fs = require('fs');
+import { execSync } from 'child_process';
+import semver from 'semver';
+import path from 'path';
+import fs from 'fs';
 
 const BASE_VERSION = '2.1.0';
 const PACKAGE_BASE = '@sammarks';
