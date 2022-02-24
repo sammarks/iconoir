@@ -30,6 +30,6 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update build artifacts and release
-    - run: pnpm -r publish --filter ./packages
+    - run: pnpm -r publish --filter ./packages --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
