@@ -3,13 +3,12 @@
   "version": "2.2.0",
   "description": "React Native library for Iconoir icon set",
   "main": "dist/index.js",
-  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dist": "tsup && tsc",
+    "dist": "tsc",
     "prepublish": "npm run dist"
   },
   "repository": {

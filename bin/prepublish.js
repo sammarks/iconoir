@@ -3,7 +3,7 @@ import semver from 'semver';
 import path from 'path';
 import fs from 'fs';
 
-const BASE_VERSION = '2.1.0';
+const BASE_VERSION = '3.0.0';
 const PACKAGE_BASE = '@sammarks';
 
 function publishPackage(name) {
