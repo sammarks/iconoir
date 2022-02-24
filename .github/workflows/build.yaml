@@ -15,8 +15,12 @@ jobs:
       with:
         node-version: '14'
         cache: 'npm'
+        registry-url: 'https://registry.npmjs.org'
     - run: npm ci
     - run: npm run build
+    - run: npm run publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update build artifacts
