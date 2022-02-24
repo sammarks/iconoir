@@ -31,7 +31,7 @@ function publishPackage(name) {
   });
 
   console.info('Publishing %s...', newVersion);
-  execSync('npm run publish', {
+  execSync('npm publish', {
     cwd: path.join(process.cwd(), 'packages', name),
     env: {
       NODE_AUTH_TOKEN: process.env.NODE_AUTH_TOKEN,
