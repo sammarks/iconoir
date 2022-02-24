@@ -26,9 +26,10 @@ jobs:
         version: 6.27.1
         run_install: true
     - run: pnpm run build
-    - run: pnpm run publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - run: pnpm run prepublish
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update build artifacts and release
+    - run: pnpm -r publish --filter ./packages
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

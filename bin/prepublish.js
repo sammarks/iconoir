@@ -24,21 +24,6 @@ function publishPackage(name) {
   }
   fs.writeFileSync(packageJsonPath, JSON.stringify(contents, undefined, 2));
   console.info('package.json updated');
-
-  console.info('Building...');
-  execSync('npm run dist', {
-    cwd: path.join(process.cwd(), 'packages', name),
-  });
-
-  console.info('Publishing %s...', newVersion);
-  execSync('npm publish', {
-    cwd: path.join(process.cwd(), 'packages', name),
-    env: {
-      NODE_AUTH_TOKEN: process.env.NODE_AUTH_TOKEN,
-    },
-  });
-
-  console.info('Complete!');
 }
 
 publishPackage('iconoir-react');
