@@ -9,11 +9,17 @@ const PACKAGE_BASE = '@sammarks';
 function publishPackage(name) {
   console.info('Publishing %s', name);
 
+  const fullPackageName = [PACKAGE_BASE, name].filter(Boolean).join('/');
   const currentVersion =
-    execSync(`npm view ${name} version`).toString() || BASE_VERSION;
+    execSync(`npm view ${fullPackageName} version`).toString() || BASE_VERSION;
+
   console.info('Current version is %s', currentVersion);
 
-  const newVersion = semver.inc(currentVersion, 'minor');
+  let newVersion = semver.inc(currentVersion, 'minor');
+  // If we have not yet met the base version, reset it.
+  if (semver.gt(BASE_VERSION, newVersion)) {
+    newVersion = BASE_VERSION;
+  }
   console.info('New version is %s', newVersion);
 
   const packageJsonPath = path.join('packages', name, 'package.json');
